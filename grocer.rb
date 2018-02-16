@@ -15,7 +15,7 @@ def apply_coupons(cart, coupons)
   newcart = cart.dup
   cart.each do |food, info|
     if food == coupons[:item] 
-      food[:count] -= coupons[:count]
+      newcart[food][:count] -= coupons[:count]
     end 
     newcart
   end
