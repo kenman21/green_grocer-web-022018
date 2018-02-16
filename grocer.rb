@@ -14,9 +14,11 @@ end
 def apply_coupons(cart, coupons)
   newcart = cart.dup
   cart.each do |food, info|
-    if food == coupons[:item] 
-      newcart["#{food} W/COUPON"] = {:price => coupons[:cost], :clearance => 'true', :count => cart[food][:count]/coupons[:num]}
-      newcart[food][:count] = newcart[food][:count]%2
+    coupons.each do |coupon|
+      if food == coupon[:item] 
+        newcart["#{food} W/COUPON"] = {:price => coupon[:cost], :clearance => cart[food][:clearance], :count => coupon[:num]/coupon[:num]}
+        newcart[food][:count] = newcart[food][:count] - coupon[:num]
+      end
     end 
   end
   newcart
