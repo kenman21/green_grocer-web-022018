@@ -1,7 +1,9 @@
 def consolidate_cart(cart)
   foods = []
   cart.each do |food, details|
-    details[:count] += 1 
+    newcart[food] = details
+  end 
+  
     
     
 
