@@ -1,8 +1,17 @@
 def consolidate_cart(cart)
-  foods = []
-  cart.each do |food, details|
-    newcart[food] = details
+  newcart = {}
+  foodlist = []
+  cart.each do |foods|
+    foods.each do |food, details|
+      foodlist<< food
+      newcart[food] = details
+      details[:count] = foodlist.count(food)
+      
+    end 
   end 
+  newcart
+end 
+
   
     
     
